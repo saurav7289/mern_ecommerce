@@ -3,15 +3,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, Navigate } from 'react-router-dom';
 import { DeleteItemFromCartAsync, selectItems, updateItemAsync } from '../features/cart/cartSlice';
 import { useForm } from 'react-hook-form';
-import { selectLoggedInUser, updateUserAsync } from '../features/auth/authSlice';
+import { updateUserAsync } from '../features/auth/authSlice';
 import { createOrderAsync, selectCurrentOrder } from '../features/order/orderSlice';
+import { selectUserInfo } from '../features/user/userSlice';
 
 
 const CheckoutPage = () => {
   const dispatch = useDispatch();
   const [open, setOpen] = useState(true);
   const items = useSelector(selectItems);
-  const user = useSelector(selectLoggedInUser);
+  const user = useSelector(selectUserInfo);
   const currentOrder = useSelector(selectCurrentOrder);
   const {
     register,
